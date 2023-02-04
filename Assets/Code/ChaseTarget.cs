@@ -11,6 +11,7 @@ public class ChaseTarget : MonoBehaviour
     public int damageValue = 50;
     public GameObject impactEffect;
     public float explosionRadius = 0f;
+    public float minDistanceFromTarget = 0f;
 
 
     private void Start()
@@ -28,16 +29,27 @@ public class ChaseTarget : MonoBehaviour
             return;
         }
 
-        //find direction and distance, if we would hit this frame, trigger HitTarget
-        Vector3 dir = target.transform.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
-
-        if (dir.magnitude <= distanceThisFrame)
+        if(minDistanceFromTarget == 0.0f)
         {
-            HitTarget();
-        }
+            //find direction and distance, if we would hit this frame, trigger HitTarget
+            Vector3 dir = target.transform.position - transform.position;
+            float distanceThisFrame = speed * Time.deltaTime;
 
-        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+            if (dir.magnitude <= distanceThisFrame)
+            {
+                HitTarget();
+            }
+
+            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        }
+        else
+        {
+            Vector3 dir = target.transform.position - transform.position;
+            if(dir.magnitude < minDistanceFromTarget)
+                transform.Translate(dir.normalized * -speed * Time.deltaTime, Space.World);
+            else
+                transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        }
 
         //rotate obj to the target
         transform.LookAt(target.transform.position);

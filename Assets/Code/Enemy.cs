@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
         if(bc != null && bc.tag == "Player")
         {
-            health--;
+            health -= bc.damage;
             Destroy(coll.gameObject);
         }
     }

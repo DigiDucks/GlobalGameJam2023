@@ -1611,6 +1611,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundCounter: 0
   waves:
+  - name: Pistol Test
+    enemy: {fileID: 2025983566539107494, guid: 4a3f777276e4f7544ae23d85021aff08, type: 3}
+    count: 5
+    rate: 5
   - name: Test Wave
     enemy: {fileID: 2025983566539107494, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
     count: 5

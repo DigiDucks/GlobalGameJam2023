@@ -283,4 +283,15 @@ public class PlayerController : Singleton<PlayerController>
         }
     }
     #endregion
+
+    void OnTriggerEnter(Collider coll)
+    {
+        Bullet bc = coll.gameObject.GetComponent<Bullet>();
+
+        if(bc != null && bc.tag == "Enemy")
+        {
+            TakeDamage(bc.damage);
+            Destroy(coll.gameObject);
+        }
+    }
 }

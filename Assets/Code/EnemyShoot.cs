@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAbility : MonoBehaviour
+public class EnemyShoot : MonoBehaviour
 {
-    [Header("Shooting")]
     public GameObject bulletPrefab;
     public float shotCooldown; // Rate of Fire
     private float shotCooldownLeft;
@@ -13,10 +12,7 @@ public class PlayerAbility : MonoBehaviour
     public float bulletLifetime;
     public float bulletVelocity;
 
-    [Header("Debug Enemy Spawning")]
-    public GameObject cubePrefab;
-    public PlayerTargeting playerTargetingScript;
-
+    // Start is called before the first frame update
     void Start()
     {
         shotCooldownLeft = 0.0f;
@@ -25,22 +21,16 @@ public class PlayerAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            GameObject enemy = Instantiate(cubePrefab, playerTargetingScript.Aim(), Quaternion.identity);
-            enemy.GetComponent<ChaseTarget>().target = gameObject.GetComponent<PlayerController>();
-        }
-
         if(shotCooldownLeft > 0.0f)
             shotCooldownLeft -= Time.deltaTime;
-        if(shotCooldownLeft <= 0.0f && Input.GetKey(KeyCode.Mouse0))
+        if(shotCooldownLeft <= 0.0f)
         {
             GameObject bulletInstance = Instantiate(bulletPrefab, gameObject.transform.position, gameObject.transform.rotation);
             Bullet bulletInstComp = bulletInstance.GetComponent<Bullet>();
             bulletInstComp.bulletVelocity = bulletVelocity;
             bulletInstComp.timeUntilDestroy = bulletLifetime;
             bulletInstComp.damage = damagePerBullet;
-            bulletInstance.tag = "Player";
+            bulletInstance.tag = "Enemy";
 
             shotCooldownLeft = shotCooldown;
         }
