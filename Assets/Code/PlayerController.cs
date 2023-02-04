@@ -8,25 +8,21 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [Space]
     [Header("Health")]
-    private int maxHealth = 100;
+    public int maxHealth = 100;
     private int currentHealth;
     public Slider healthSlider2D;
     public Slider healthSlider3D;
 
     [Space]
     [Header("Stats")]
-    private int armor;//flat damage reduction
+    public int armor;//flat damage reduction
 
     [Header("Movement")]
     [HideInInspector]
     public float currentSpeed = 6f; //movement speed
-    private float baseSpeed = 6f;
-    [HideInInspector]
+    public float baseSpeed = 6f;
     public float rotationSpeed = 5f;
     private float currentSlow = 0f;
-
-    [Header("Player Stats")]
-    public PlayerStats baseStats;
 
     [System.Serializable]
     public class SlowValues
@@ -42,33 +38,20 @@ public class PlayerController : MonoBehaviour
     //set health vals
     private void Start()
     {
-        BaseStatsStart();
-        HealthStart();
+        HealthStart(); //UNTESTED
     }
 
 
     //update loops
     private void Update()
     {
-        HealthUpdate();
+        HealthUpdate(); //UNTESTED
         UpdateSlow(); //UNTESTED
         UpdateSpeed(); //UNTESTED
 
         //temp debugging
         TestValues();
     }
-
-
-    #region Base Stats
-    //instanciate base stats
-    private void BaseStatsStart()
-    {
-        baseStats.baseMaxHealth = maxHealth;
-        baseStats.baseArmor = armor;
-        baseStats.baseMoveSpeed = baseSpeed;
-        baseStats.baseRotationSpeed = rotationSpeed;
-    }
-    #endregion
 
 
     #region Health Based
@@ -186,7 +169,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-
         //check array for each slow
         foreach (SlowValues item in slowValuesList)
         {
@@ -231,8 +213,6 @@ public class PlayerController : MonoBehaviour
 
 
 
-
-
         //if get key + add slow by 0.5 for 5 seconds
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -248,7 +228,6 @@ public class PlayerController : MonoBehaviour
         {
             AddSlow(.5f, 5f);
         }
-
     }
     #endregion
 }
