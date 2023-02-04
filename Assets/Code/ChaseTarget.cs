@@ -6,12 +6,17 @@ using static UnityEngine.GraphicsBuffer;
 public class ChaseTarget : MonoBehaviour
 {
     //vars
-    public Transform target;
+    public PlayerController target;
     public float speed = 5f;
     public int damageValue = 50;
     public GameObject impactEffect;
     public float explosionRadius = 0f;
 
+
+    private void Start()
+    {
+        target = PlayerController.Instance;
+    }
 
     // Update is called once per frame
     void Update()
@@ -24,7 +29,7 @@ public class ChaseTarget : MonoBehaviour
         }
 
         //find direction and distance, if we would hit this frame, trigger HitTarget
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.transform.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
         if (dir.magnitude <= distanceThisFrame)
@@ -35,7 +40,7 @@ public class ChaseTarget : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
         //rotate obj to the target
-        transform.LookAt(target);
+        transform.LookAt(target.transform.position);
     }
 
     //spawn effect then explode or damage then destroy self
@@ -53,7 +58,7 @@ public class ChaseTarget : MonoBehaviour
         }
         else
         {
-            Damage(target);
+            Damage(target.transform);
         }
 
         //destroy self
@@ -83,6 +88,6 @@ public class ChaseTarget : MonoBehaviour
         {
             playerScript.TakeDamage(damageValue);
         }
-        Debug.Log("Enemy dealt damage = " + damageValue);
+        //Debug.Log("Enemy dealt damage = " + damageValue);
     }
 }

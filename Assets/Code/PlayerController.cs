@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     #region Variables
     [Space]
@@ -45,16 +45,16 @@ public class PlayerController : MonoBehaviour
     //set health vals
     private void Start()
     {
-        HealthStart(); //UNTESTED
+        HealthStart();
     }
 
 
     //update loops
     private void Update()
     {
-        HealthUpdate(); //UNTESTED
-        UpdateSlow(); //UNTESTED
-        UpdateSpeed(); //UNTESTED
+        HealthUpdate();
+        UpdateSlow();
+        UpdateSpeed();
 
         //temp debugging
         TestValues();
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
     public void TakeHealing(int healAmount)
     {
         currentHealth += healAmount;
-        Debug.Log(transform.name + " heals " + healAmount + " health.");
+        //Debug.Log(transform.name + " heals " + healAmount + " health.");
 
         OverHeal();
     }
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
 
         currentHealth -= damage;
-        Debug.Log(transform.name + " takes " + damage + " damage.");
+        //Debug.Log(transform.name + " takes " + damage + " damage.");
 
         //camera shaker here
         StartCoroutine(camShake.CameraShaker(duration, magnitude));
@@ -214,12 +214,12 @@ public class PlayerController : MonoBehaviour
         //if "get key +", heal by 10
         if (Input.GetKeyDown(KeyCode.Equals))
         {
-            TakeHealing(10);
+            TakeHealing(1);
         }
         //if "get key -", damage by 10
         if (Input.GetKeyDown(KeyCode.Minus))
         {
-            TakeDamage(10);
+            TakeDamage(1);
         }
 
 
