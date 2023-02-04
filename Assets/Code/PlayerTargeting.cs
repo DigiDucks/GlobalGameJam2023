@@ -41,7 +41,7 @@ public class PlayerTargeting : MonoBehaviour
             //ignore the height difference
             if (ignoreHeight)
             {
-                direction.y = 0;
+                position.y = 0;
             }
 
             //set transform to look in the direction
