@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4496172, g: 0.4996916, b: 0.57565665, a: 1}
+  m_IndirectSpecularColor: {r: 0.44961822, g: 0.4996925, b: 0.5756582, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -914,7 +914,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f190ea5c44a4dc98c4e3b58705516b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempPrefab: {fileID: 4008145678738674361, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
+  bulletPrefab: {fileID: 3357566480658978341, guid: abb92c0fd54c00b4e99c942c00725d12, type: 3}
+  shotCooldown: 0.2
+  bulletsPerShot: 1
+  damagePerBullet: 1
+  bulletLifetime: 3
+  bulletVelocity: 10
+  cubePrefab: {fileID: 0}
   playerTargetingScript: {fileID: 384465335}
 --- !u!82 &384465340
 AudioSource:
