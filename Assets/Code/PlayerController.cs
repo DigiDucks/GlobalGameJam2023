@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         public float slowTimer = 0f;
         public bool isDestroyed = false;
     }
+    [Space]
     public List<SlowValues> slowValuesList = new List<SlowValues>();
     #endregion
 
