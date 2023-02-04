@@ -200,12 +200,12 @@ public class PlayerController : MonoBehaviour
     #region
     private void TestValues()
     {
-        //if get key + heal by 10
+        //if "get key +", heal by 10
         if (Input.GetKeyDown(KeyCode.Equals))
         {
             TakeHealing(10);
         }
-        //if get key + damage by 10
+        //if "get key -", damage by 10
         if (Input.GetKeyDown(KeyCode.Minus))
         {
             TakeDamage(10);
@@ -213,17 +213,17 @@ public class PlayerController : MonoBehaviour
 
 
 
-        //if get key + add slow by 0.5 for 5 seconds
+        //if "get key 0", add slow by 0.5 for 5 seconds
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             AddSlow(.99f, 1f);
         }
-        //if get key + add slow by 0.5 for 5 seconds
+        //if "get key 8", add slow by 0.5 for 5 seconds
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             AddSlow(.25f, 20f);
         }
-        //if get key + add slow by 0.5 for 5 seconds
+        //if "get key 9", add slow by 0.5 for 5 seconds
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             AddSlow(.5f, 5f);
