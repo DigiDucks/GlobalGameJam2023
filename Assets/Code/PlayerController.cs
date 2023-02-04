@@ -124,8 +124,8 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         Debug.Log(transform.name + " takes " + damage + " damage.");
 
+        //camera shaker here
         StartCoroutine(camShake.CameraShaker(duration, magnitude));
-
 
         DeathCheck();
     }

@@ -188,7 +188,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384465330
 GameObject:
@@ -293,7 +293,7 @@ Transform:
   - {fileID: 1553009486}
   - {fileID: 1497401928}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &384465335
 MonoBehaviour:
@@ -611,7 +611,7 @@ Transform:
   - {fileID: 563027153}
   - {fileID: 1238284247}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1220782383
 GameObject:
@@ -998,7 +998,7 @@ RectTransform:
   m_Children:
   - {fileID: 5047906500945303911}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1035,7 +1035,7 @@ Transform:
   m_Children:
   - {fileID: 1234122969}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1497401927
 GameObject:
@@ -1606,7 +1606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2251178011596494216, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2251178011596494216, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1702,7 +1702,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6507640973947466618, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6507640973947466618, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
+      propertyPath: offsetVal.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507640973947466618, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 384465334}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
