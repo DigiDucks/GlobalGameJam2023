@@ -66,11 +66,14 @@ public class PlayerController : Singleton<PlayerController>
     public float damagePitchMax;
     #endregion
 
+    private GameObject face;
+
     //set health vals
     private void Start()
     {
         HealthStart();
         soundSource = GetComponent<AudioSource>();
+        face = transform.GetChild(1).gameObject;
     }
 
 
@@ -83,6 +86,9 @@ public class PlayerController : Singleton<PlayerController>
 
         //temp debugging
         TestValues();
+
+        // For rotating the sprite to face the camera
+        face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
     }
 
 
@@ -154,11 +160,14 @@ public class PlayerController : Singleton<PlayerController>
 
 
         //damage lives audio
-        damageVolume = Random.Range(damageVolumeMin, damageVolumeMax);
-        damagePitch = Random.Range(damagePitchMin, damagePitchMax);
-        soundSource.volume = damageVolume;
-        soundSource.pitch = damagePitch;
-        soundSource.PlayOneShot(damageSound);
+        if(damageSound != null)
+        {
+            damageVolume = Random.Range(damageVolumeMin, damageVolumeMax);
+            damagePitch = Random.Range(damagePitchMin, damagePitchMax);
+            soundSource.volume = damageVolume;
+            soundSource.pitch = damagePitch;
+            soundSource.PlayOneShot(damageSound);
+        }
 
         DeathCheck();
     }

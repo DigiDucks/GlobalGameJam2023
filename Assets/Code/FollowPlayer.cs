@@ -16,18 +16,21 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pt = playerRef.transform.position;
+        if(playerRef != null)
+        {
+            Vector3 pt = playerRef.transform.position;
 
-        if(pt.x < -19)
-            pt.x = -19;
-        else if(pt.x > 19)
-            pt.x = 19;
+            if(pt.x < -19)
+                pt.x = -19;
+            else if(pt.x > 19)
+                pt.x = 19;
 
-        if(pt.z < -13)
-            pt.z = -13;
-        else if(pt.z > 13)
-            pt.z = 13;
+            if(pt.z < -13)
+                pt.z = -13;
+            else if(pt.z > 13)
+                pt.z = 13;
 
-        gameObject.transform.position = pt + diff;
+            gameObject.transform.position = pt + diff;
+        }
     }
 }

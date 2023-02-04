@@ -10,8 +10,10 @@ public class LookAtCamera : MonoBehaviour
     //theres probs a better way to do this?
     private void LateUpdate()
     {
-        Vector3 tempPos = playerTransform.position + offsetVal;
-
-        transform.SetPositionAndRotation(tempPos, Quaternion.identity);
+        if(playerTransform != null)
+        {
+            Vector3 tempPos = playerTransform.position + offsetVal;
+            transform.SetPositionAndRotation(tempPos, Quaternion.identity);
+        }
     }
 }

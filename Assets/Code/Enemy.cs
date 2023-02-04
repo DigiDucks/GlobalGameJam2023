@@ -5,11 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health;
+    private GameObject face;
 
     // Start is called before the first frame update
     void Start()
     {
-        //health = 1;   
+        face = transform.GetChild(0).gameObject; 
     }
 
     // Update is called once per frame
@@ -17,6 +18,9 @@ public class Enemy : MonoBehaviour
     {
         if(health <= 0)
             Destroy(gameObject);
+
+        // Rotate sprite to face camera
+        face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
     }
 
     void OnTriggerEnter(Collider coll)

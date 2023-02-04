@@ -23,19 +23,22 @@ public class RandomSoundVariant : MonoBehaviour
 
     public void RandomSoundVariantPlay()
     {
-        //get random clip
-        index = UnityEngine.Random.Range(0, soundClip.Length);
-        currentClip = soundClip[index];
+        if(soundClip.Length > 0)
+        {
+            //get random clip
+            index = UnityEngine.Random.Range(0, soundClip.Length);
+            currentClip = soundClip[index];
 
-        //make random volume and pitch
-        volume = UnityEngine.Random.Range(volumeMin, volumeMax);
-        pitch = UnityEngine.Random.Range(pitchMin, pitchMax);
+            //make random volume and pitch
+            volume = UnityEngine.Random.Range(volumeMin, volumeMax);
+            pitch = UnityEngine.Random.Range(pitchMin, pitchMax);
 
-        //set randoms
-        soundSource.volume = volume;
-        soundSource.pitch = pitch;
+            //set randoms
+            soundSource.volume = volume;
+            soundSource.pitch = pitch;
 
-        //play clip
-        soundSource.PlayOneShot(currentClip);
+            //play clip
+            soundSource.PlayOneShot(currentClip);
+        }
     }
 }
