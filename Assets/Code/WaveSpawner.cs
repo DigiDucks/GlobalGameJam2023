@@ -23,7 +23,11 @@ public class WaveSpawner : MonoBehaviour
     //wave array and count and spawn location
     public Wave[] waves;
     private int nextWave = 0;
-    public GameObject spawnLocation;
+
+    //spawn locations
+    public GameObject[] spawnLocations;
+    private GameObject currentPoint;
+    private int index;
 
     //timers
     public float timeBetweenWaves = 5f;
@@ -138,6 +142,16 @@ public class WaveSpawner : MonoBehaviour
     {
         //spawn enemy
         //Debug.Log("Spawning Enemy: " + _enemy.name);
-        Instantiate(_enemy, spawnLocation.transform.position, transform.rotation);
+        Instantiate(_enemy, RandomSpawnLocation().position, transform.rotation);
+    }
+
+
+    //random spawn point from the array
+    private Transform RandomSpawnLocation()
+    {
+        index = Random.Range(0, spawnLocations.Length);
+        currentPoint = spawnLocations[index];
+
+        return currentPoint.transform;
     }
 }
