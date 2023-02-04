@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2151498743460759597}
   - component: {fileID: 3723142208651590227}
   - component: {fileID: 1886585725200916528}
+  - component: {fileID: 9206491275561903112}
   m_Layer: 0
-  m_Name: TEMPCube
+  m_Name: EnemyCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,8 +93,25 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4008145678738674361}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9206491275561903112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4008145678738674361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c185a3c5a52784d9587c77a66c8c0f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 5
+  damageValue: 1
+  impactEffect: {fileID: 4423801109589410838, guid: 381d04336be6a4300bdc4fab66c2f070, type: 3}
+  explosionRadius: 0

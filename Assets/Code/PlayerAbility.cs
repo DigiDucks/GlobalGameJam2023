@@ -12,7 +12,8 @@ public class PlayerAbility : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(tempPrefab, playerTargetingScript.Aim(), Quaternion.identity);
+            GameObject enemy = Instantiate(tempPrefab, playerTargetingScript.Aim(), Quaternion.identity);
+            enemy.GetComponent<ChaseTarget>().target = gameObject.transform;
         }
     }
 }
