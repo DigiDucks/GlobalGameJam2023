@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     public float timeUntilDestroy;
     [HideInInspector]
     public int damage;
+    //[HideInInspector]
+    //public string tag;
 
     // Update is called once per frame
     void Update()

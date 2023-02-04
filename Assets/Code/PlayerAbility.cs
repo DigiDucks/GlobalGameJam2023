@@ -38,6 +38,7 @@ public class PlayerAbility : MonoBehaviour
             bulletInstComp.bulletVelocity = bulletVelocity;
             bulletInstComp.timeUntilDestroy = bulletLifetime;
             bulletInstComp.damage = damagePerBullet;
+            bulletInstance.tag = "Player";
 
             shotCooldownLeft = shotCooldown;
         }

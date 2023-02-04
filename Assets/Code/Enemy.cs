@@ -25,7 +25,9 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.gameObject.GetComponent<Bullet>() != null)
+        Bullet bc = coll.gameObject.GetComponent<Bullet>();
+
+        if(bc != null && bc.tag == "Player")
         {
             health--;
             Destroy(coll.gameObject);
