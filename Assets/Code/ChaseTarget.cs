@@ -41,7 +41,7 @@ public class ChaseTarget : MonoBehaviour
     //spawn effect then explode or damage then destroy self
     void HitTarget()
     {
-        Debug.Log("HIT TARGET TRIGGER");
+        //Debug.Log("HIT TARGET TRIGGER");
 
         GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 5f);

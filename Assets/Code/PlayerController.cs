@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     public Slider healthSlider3D;
 
     [Space]
+    [Header("Camera Shake")]
+    public CameraShake camShake;
+    public float duration;
+    public float magnitude;
+
+    [Space]
     [Header("Stats")]
     public int armor;//flat damage reduction
 
@@ -117,6 +123,10 @@ public class PlayerController : MonoBehaviour
 
         currentHealth -= damage;
         Debug.Log(transform.name + " takes " + damage + " damage.");
+
+        StartCoroutine(camShake.CameraShaker(duration, magnitude));
+
+
         DeathCheck();
     }
 
