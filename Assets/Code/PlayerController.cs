@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,22 +14,27 @@ public class PlayerController : Singleton<PlayerController>
     public Slider healthSlider2D;
     public Slider healthSlider3D;
 
+
+
     [Space]
     [Header("Camera Shake")]
     public CameraShake camShake;
     public float duration;
     public float magnitude;
 
+
     [Space]
     [Header("Stats")]
     public int armor;//flat damage reduction
 
+    
     [Header("Movement")]
     [HideInInspector]
     public float currentSpeed = 6f; //movement speed
     public float baseSpeed = 6f;
     public float rotationSpeed = 5f;
     private float currentSlow = 0f;
+
 
     [System.Serializable]
     public class SlowValues
@@ -38,14 +44,33 @@ public class PlayerController : Singleton<PlayerController>
         public float slowTimer = 0f;
         public bool isDestroyed = false;
     }
+
+
     [Space]
     public List<SlowValues> slowValuesList = new List<SlowValues>();
+
+
+
+
+
+    //damage sound
+    [Space]
+    [Header("Damage Sound")]
+    private AudioSource soundSource;
+    public AudioClip damageSound;
+    private float damageVolume;
+    private float damagePitch;
+    public float damageVolumeMin;
+    public float damageVolumeMax;
+    public float damagePitchMin;
+    public float damagePitchMax;
     #endregion
 
     //set health vals
     private void Start()
     {
         HealthStart();
+        soundSource = GetComponent<AudioSource>();
     }
 
 
@@ -126,6 +151,14 @@ public class PlayerController : Singleton<PlayerController>
 
         //camera shaker here
         StartCoroutine(camShake.CameraShaker(duration, magnitude));
+
+
+        //damage lives audio
+        damageVolume = Random.Range(damageVolumeMin, damageVolumeMax);
+        damagePitch = Random.Range(damagePitchMin, damagePitchMax);
+        soundSource.volume = damageVolume;
+        soundSource.pitch = damagePitch;
+        soundSource.PlayOneShot(damageSound);
 
         DeathCheck();
     }
