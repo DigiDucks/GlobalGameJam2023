@@ -93,6 +93,16 @@ public class PlayerController : Singleton<PlayerController>
             burnDurationLeft -= Time.deltaTime;
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            #if UNITY_STANDALONE
+                Application.Quit();
+            #endif
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+        }
+
         //temp debugging
         TestValues();
 
