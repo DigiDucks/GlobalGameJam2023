@@ -11,6 +11,7 @@ public class EnemyShoot : MonoBehaviour
     public int damagePerBullet;
     public float bulletLifetime;
     public float bulletVelocity;
+    public bool isFlamethrower = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,9 @@ public class EnemyShoot : MonoBehaviour
             bulletInstComp.timeUntilDestroy = bulletLifetime;
             bulletInstComp.damage = damagePerBullet;
             bulletInstance.tag = "Enemy";
+
+            if(isFlamethrower)
+                bulletInstComp.isFlamethrower = true;
 
             shotCooldownLeft = shotCooldown;
         }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public bool isFlamethrower = false;
+
     [Header("Main Parameters")]
     [HideInInspector]
     public float bulletVelocity;
@@ -45,7 +47,8 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<RandomSoundVariant>().RandomSoundVariantPlay();
+        if(isFlamethrower == false)
+            GetComponent<RandomSoundVariant>().RandomSoundVariantPlay();
     }
 
     private void OnTriggerEnter(Collider other)

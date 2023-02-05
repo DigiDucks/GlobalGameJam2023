@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  outchPitch: 0.4
   face: {fileID: 5596243127398220580}
 --- !u!54 &2104761772298050090
 Rigidbody:
@@ -225,12 +226,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8f20a4ac30b7643a5303491e9d0bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3357566480658978341, guid: cf1f17de7d4cf134ab113776b60e3aa1, type: 3}
+  bulletPrefab: {fileID: 3357566480658978341, guid: 21a4af4b79ac2954c9290dc4a72358eb, type: 3}
   shotCooldown: 0.3
   bulletsPerShot: 1
   damagePerBullet: 1
   bulletLifetime: 0.7
   bulletVelocity: 8
+  isFlamethrower: 1
 --- !u!1 &5596243127398220580
 GameObject:
   m_ObjectHideFlags: 0

@@ -706,7 +706,7 @@ Transform:
   m_Children:
   - {fileID: 1234122969}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1420961707
 MonoBehaviour:
@@ -1038,6 +1038,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7226af0ab44abe24fb0777657fab9f8c, type: 2}
     - target: {fileID: 1226007989712126747, guid: 905e778cb6c02b44e8f23ba0490d374d, type: 3}
+      propertyPath: waves.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7226af0ab44abe24fb0777657fab9f8c, type: 2}
+    - target: {fileID: 1226007989712126747, guid: 905e778cb6c02b44e8f23ba0490d374d, type: 3}
+      propertyPath: waves.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7226af0ab44abe24fb0777657fab9f8c, type: 2}
+    - target: {fileID: 1226007989712126747, guid: 905e778cb6c02b44e8f23ba0490d374d, type: 3}
+      propertyPath: waves.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7226af0ab44abe24fb0777657fab9f8c, type: 2}
+    - target: {fileID: 1226007989712126747, guid: 905e778cb6c02b44e8f23ba0490d374d, type: 3}
       propertyPath: spawnLocations.Array.data[0]
       value: 
       objectReference: {fileID: 1802473680}
@@ -1120,7 +1132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1407283278167228502, guid: 37a0e314855dd1546952748682bd4e2c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1407283278167228502, guid: 37a0e314855dd1546952748682bd4e2c, type: 3}
       propertyPath: m_LocalPosition.x
