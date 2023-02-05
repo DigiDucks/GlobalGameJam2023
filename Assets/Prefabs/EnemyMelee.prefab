@@ -67,7 +67,7 @@ MonoBehaviour:
   damageValue: 1
   impactEffect: {fileID: 4423801109589410838, guid: 381d04336be6a4300bdc4fab66c2f070, type: 3}
   explosionRadius: 0
-  minDistanceFromTarget: 0
+  minDistanceFromTarget: 2.75
 --- !u!114 &4441159062192492975
 MonoBehaviour:
   m_ObjectHideFlags: 0

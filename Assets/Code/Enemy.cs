@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GGJ2023;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -24,6 +25,16 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        EventManager.KillAll.AddListener(KillCommand);
+    }
+    private void OnDisable()
+    {
+        WaveSpawner.EnemiesInWave.Remove(this);
+        EventManager.KillAll.RemoveListener(KillCommand);
     }
 
     // Update is called once per frame
@@ -60,10 +71,12 @@ public class Enemy : MonoBehaviour
        // face.transform.Rotate(0, 180, 0);
     }
 
-    private void OnDisable()
+    private void KillCommand()
     {
-        WaveSpawner.EnemiesInWave.Remove(this);
+        Destroy(gameObject);
     }
+
+
 
     void OnTriggerEnter(Collider coll)
     {

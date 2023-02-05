@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GGJ2023;
 using UnityEngine;
 
 public class PlayerAbility : MonoBehaviour
@@ -48,8 +49,11 @@ public class PlayerAbility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             GameObject enemy = Instantiate(cubePrefab, playerTargetingScript.Aim(), Quaternion.identity);
-            enemy.GetComponent<ChaseTarget>().target = gameObject.GetComponent<PlayerController>();
         }
+        
+        //Cheat Code
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.K))
+            EventManager.KillAll.Invoke();
 
         if(shotCooldownLeft > 0.0f)
             shotCooldownLeft -= Time.deltaTime;

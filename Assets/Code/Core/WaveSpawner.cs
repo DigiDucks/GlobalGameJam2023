@@ -1,27 +1,22 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using GGJ2023;
 using UnityEngine.UI;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class WaveSpawner : Singleton<WaveSpawner>
 {
     //spawner state locks
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
-    public int roundCounter = 0;
+    public int waveCounter = 0;
+    [SerializeField] private int RoundInterval = 5;
 
-    //wave define
-    [System.Serializable]
-    public class Wave
-    {
-        public string name;
-        public Transform enemy;
-        public int count;
-        public float rate;
-    }
 
     //wave array and count and spawn location
-    public Wave[] waves;
+    public List<Wave> waves = new List<Wave>();
     private int nextWave = 0;
 
     //spawn locations
@@ -31,53 +26,53 @@ public class WaveSpawner : Singleton<WaveSpawner>
 
     //timers
     public float timeBetweenWaves = 5f;
-
     public float waveCountdown;
-    private float searchCountdown = 1f;
     public TextMeshProUGUI waveCountdownTimer;
 
     //state machine
     public SpawnState state = SpawnState.COUNTING;
 
-    public static List<Enemy> EnemiesInWave = new List<Enemy>();
+    public static readonly List<Enemy> EnemiesInWave = new List<Enemy>();
 
     //start 
     private void Start()
     {
         waveCountdown = timeBetweenWaves;
+        EventManager.ArenaChange.Invoke();
     }
 
     //countdowns
     private void Update()
     {
-        if (state == SpawnState.WAITING)
+        //Cheat Codes
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.P))
+            state = SpawnState.COUNTING;
+        
+        
+        switch(state)
         {
-            //check if enemies are still alive
-            if (!EnemyIsAlive())
-            {
-                //begin a new round
-                WaveCompleted();
-                return;
-            }
-            else
-            {
-                return;
-            }
-        }
+            case SpawnState.SPAWNING:
+                //Wait for coroutine to finish
+                break;
+            case SpawnState.WAITING:
+                //check if enemies are still alive
+                if (!EnemyIsAlive())
+                    WaveCompleted();//begin a new round
+                break;
+            case SpawnState.COUNTING:
+                waveCountdown -= Time.deltaTime;
+                waveCountdown = Mathf.Clamp(waveCountdown, 0f, Mathf.Infinity);
+                waveCountdownTimer.text = $"{waveCountdown:00.00}";
 
-        if (waveCountdown <= 0)
-        {
-            if (state != SpawnState.SPAWNING)
-            {
-                //start wave spawning
-                StartCoroutine(SpawnWave(waves[nextWave]));
-            }
-        }
-        else
-        {
-            waveCountdown -= Time.deltaTime;
-            waveCountdown = Mathf.Clamp(waveCountdown, 0f, Mathf.Infinity);
-            waveCountdownTimer.text = $"{waveCountdown:00.00}";
+                if (waveCountdown <= 0)
+                {
+                    state = SpawnState.SPAWNING;
+                    StartCoroutine(SpawnWave(waves[Random.Range(0,waves.Count)]));
+                }
+
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -87,15 +82,11 @@ public class WaveSpawner : Singleton<WaveSpawner>
         state = SpawnState.COUNTING;
         waveCountdown = timeBetweenWaves;
 
-        if (nextWave + 1 > waves.Length - 1)
+        nextWave++;
+        
+        if (nextWave % RoundInterval == 0)
         {
-            nextWave = 0;
-            Debug.Log("ALL WAVES COMPLETE! LOOPING...");
-            //winscreen or endless mode or???
-        }
-        else
-        {
-            nextWave++;
+            EventManager.ArenaChange.Invoke();
         }
     }
 
@@ -109,34 +100,30 @@ public class WaveSpawner : Singleton<WaveSpawner>
     IEnumerator SpawnWave(Wave _wave)
     {
         //Debug.Log("Spawning Wave: " + _wave.name);
+        waveCounter++;
 
-        roundCounter++;
-
-        //for each enemy we are spawning itterate them
-        state = SpawnState.SPAWNING;
-
-        //delay after each spawn
-        for (int i = 0; i < _wave.count; i++)
+        foreach (var element in _wave.enemies)
         {
-            SpawnEnemy(_wave.enemy);
-            yield return new WaitForSeconds(1f / _wave.rate);
+            for (int i = 0; i < element.count; i++)
+            {
+                SpawnEnemy(element.Enemy);
+                yield return new WaitForSeconds(1f / _wave.rate);
+            }
         }
+        
+        //delay after each spawn
+   
 
         state = SpawnState.WAITING;
         yield break;
     }
 
     //enemy creation
-    void SpawnEnemy(Transform _enemy)
+    void SpawnEnemy(GameObject _enemy)
     {
         //spawn enemy
         //Debug.Log("Spawning Enemy: " + _enemy.name);
        EnemiesInWave.Add(Instantiate(_enemy, RandomSpawnLocation().position, transform.rotation).GetComponent<Enemy>());
-    }
-
-    public void EnemyKilled(Enemy enemy)
-    {
-        EnemiesInWave.Remove(enemy);
     }
 
 

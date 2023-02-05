@@ -47,5 +47,7 @@ public class Bullet : MonoBehaviour
     {
         if(other.CompareTag("Obstacle"))
             Destroy(gameObject);
+        else if(other.CompareTag("Player"))
+            PlayerController.Instance.OnDamage(this);
     }
 }

@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
+    public enum Effects
+    {
+        None,
+        Burn,
+        Slow,
+        Bomb,
+    }
+    
     [Header("Basic Stats")]
     public int MaxHealthAdded;
     public int ArmorAdded;

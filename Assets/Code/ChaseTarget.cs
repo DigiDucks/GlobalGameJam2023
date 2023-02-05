@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class ChaseTarget : MonoBehaviour
 {
     //vars
-    public PlayerController target;
+    public Transform target;
     public float speed = 5f;
     public int damageValue = 50;
     public GameObject impactEffect;
@@ -16,7 +17,7 @@ public class ChaseTarget : MonoBehaviour
 
     private void Start()
     {
-        target = PlayerController.Instance;
+        target = PlayerController.Instance.transform;
     }
 
     // Update is called once per frame
@@ -29,30 +30,22 @@ public class ChaseTarget : MonoBehaviour
             return;
         }
 
-        if(minDistanceFromTarget == 0.0f)
-        {
-            //find direction and distance, if we would hit this frame, trigger HitTarget
-            Vector3 dir = target.transform.position - transform.position;
-            float distanceThisFrame = speed * Time.deltaTime;
+        var direction = target.position - transform.position;
 
-            if (dir.magnitude <= distanceThisFrame)
-            {
-                HitTarget();
-            }
-
-            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-        }
+        if (direction.magnitude < minDistanceFromTarget)
+            transform.Translate(direction.normalized * (-speed * Time.deltaTime), Space.World);
         else
-        {
-            Vector3 dir = target.transform.position - transform.position;
-            if(dir.magnitude < minDistanceFromTarget)
-                transform.Translate(dir.normalized * -speed * Time.deltaTime, Space.World);
-            else
-                transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-        }
+            transform.Translate(direction.normalized * (speed * Time.deltaTime), Space.World);
 
         //rotate obj to the target
         transform.LookAt(target.transform.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Bullet bc = other.gameObject.GetComponent<Bullet>();
+        if (other.CompareTag("Player") && bc == null)
+            HitTarget();
     }
 
     //spawn effect then explode or damage then destroy self
@@ -70,7 +63,7 @@ public class ChaseTarget : MonoBehaviour
         }
         else
         {
-            Damage(target.transform);
+            Damage();
         }
 
         //destroy self
@@ -83,23 +76,18 @@ public class ChaseTarget : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
-            if (collider.tag == "Player")
+            if (collider.CompareTag("Player"))
             {
-                Damage(collider.transform);
+                Damage();
             }
         }
     }
 
     //damage = script's take damage, destroy self
-    void Damage(Transform playerObject)
+    void Damage()
     {
-        PlayerController playerScript = playerObject.GetComponent<PlayerController>();
+        PlayerController.Instance.TakeDamage(damageValue);
 
-        //null enemy component check
-        if (playerScript != null)
-        {
-            playerScript.TakeDamage(damageValue);
-        }
         //Debug.Log("Enemy dealt damage = " + damageValue);
     }
 }

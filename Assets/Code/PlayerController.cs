@@ -8,31 +8,23 @@ using UnityEngine.UI;
 public class PlayerController : Singleton<PlayerController>
 {
     #region Variables
-    [Space]
-    [Header("Health")]
-    public int maxHealth = 100;
+
+    [Space] [Header("Health")] public int maxHealth = 100;
     private int currentHealth;
     public Slider healthSlider2D;
     public Slider healthSlider3D;
 
 
-
-    [Space]
-    [Header("Camera Shake")]
-    public CameraShake camShake;
+    [Space] [Header("Camera Shake")] public CameraShake camShake;
     public float duration;
     public float magnitude;
     private Camera mainCamera;
 
 
-    [Space]
-    [Header("Stats")]
-    public int armor;//flat damage reduction
+    [Space] [Header("Stats")] public int armor; //flat damage reduction
 
-    
-    [Header("Movement")]
-    [HideInInspector]
-    public float currentSpeed = 6f; //movement speed
+
+    [Header("Movement")] [HideInInspector] public float currentSpeed = 6f; //movement speed
     public float baseSpeed = 6f;
     public float rotationSpeed = 5f;
     private float currentSlow = 0f;
@@ -48,17 +40,11 @@ public class PlayerController : Singleton<PlayerController>
     }
 
 
-    [Space]
-    public List<SlowValues> slowValuesList = new List<SlowValues>();
-
-
-
+    [Space] public List<SlowValues> slowValuesList = new List<SlowValues>();
 
 
     //damage sound
-    [Space]
-    [Header("Damage Sound")]
-    private AudioSource soundSource;
+    [Space] [Header("Damage Sound")] private AudioSource soundSource;
     public AudioClip damageSound;
     private float damageVolume;
     private float damagePitch;
@@ -66,6 +52,7 @@ public class PlayerController : Singleton<PlayerController>
     public float damageVolumeMax;
     public float damagePitchMin;
     public float damagePitchMax;
+
     #endregion
 
     private GameObject face;
@@ -74,7 +61,7 @@ public class PlayerController : Singleton<PlayerController>
     private int burnDamagePerTick;
     private float burnDurationLeft;
     private float burnTickDuration;
-    private float burnTickDurationLeft; 
+    private float burnTickDurationLeft;
 
     //set health vals
     private void Start()
@@ -93,10 +80,10 @@ public class PlayerController : Singleton<PlayerController>
         UpdateSlow();
         UpdateSpeed();
 
-        if(burnDurationLeft > 0.0f)
+        if (burnDurationLeft > 0.0f)
         {
             burnTickDurationLeft -= Time.deltaTime;
-            if(burnTickDurationLeft <= 0.0f)
+            if (burnTickDurationLeft <= 0.0f)
             {
                 currentHealth -= burnDamagePerTick;
                 burnTickDurationLeft = burnTickDuration;
@@ -116,6 +103,7 @@ public class PlayerController : Singleton<PlayerController>
 
 
     #region Health Based
+
     //health start values
     void HealthStart()
     {
@@ -127,6 +115,7 @@ public class PlayerController : Singleton<PlayerController>
             healthSlider2D.maxValue = maxHealth;
             healthSlider2D.value = currentHealth;
         }
+
         if (healthSlider3D != null)
         {
             healthSlider3D.maxValue = maxHealth;
@@ -142,6 +131,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             healthSlider2D.value = currentHealth;
         }
+
         if (healthSlider3D != null)
         {
             healthSlider3D.value = currentHealth;
@@ -183,7 +173,7 @@ public class PlayerController : Singleton<PlayerController>
 
 
         //damage lives audio
-        if(damageSound != null)
+        if (damageSound != null)
         {
             damageVolume = Random.Range(damageVolumeMin, damageVolumeMax);
             damagePitch = Random.Range(damagePitchMin, damagePitchMax);
@@ -203,12 +193,13 @@ public class PlayerController : Singleton<PlayerController>
         {
             //this is meant to be overwritten
             Debug.Log(transform.name + " died");
-            
+
             //Trigger Death Sequence [Li]
             EventManager.PlayerDeath.Invoke();
-           // Destroy(gameObject);
+            // Destroy(gameObject);
         }
     }
+
     #endregion
 
 
@@ -271,12 +262,13 @@ public class PlayerController : Singleton<PlayerController>
 
         //remove flagged slows
         slowValuesList.RemoveAll(item => item.isDestroyed);
-
     }
+
     #endregion
 
 
     #region
+
     private void TestValues()
     {
         //if "get key +", heal by 10
@@ -284,6 +276,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             TakeHealing(1);
         }
+
         //if "get key -", damage by 10
         if (Input.GetKeyDown(KeyCode.Minus))
         {
@@ -291,44 +284,41 @@ public class PlayerController : Singleton<PlayerController>
         }
 
 
-
         //if "get key 0", add slow by 0.5 for 5 seconds
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             AddSlow(.99f, 1f);
         }
+
         //if "get key 8", add slow by 0.5 for 5 seconds
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             AddSlow(.25f, 20f);
         }
+
         //if "get key 9", add slow by 0.5 for 5 seconds
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             AddSlow(.5f, 5f);
         }
     }
+
     #endregion
 
-    void OnTriggerEnter(Collider coll)
+    public void OnDamage(Bullet bc)
     {
-        Bullet bc = coll.gameObject.GetComponent<Bullet>();
+        TakeDamage(bc.damage);
 
-        if(bc != null && bc.CompareTag("Enemy"))
+        if (bc.slowDuration > 0.0f)
+            AddSlow(bc.slowSpeed, bc.slowDuration);
+        if (bc.burnDuration > 0.0f)
         {
-            TakeDamage(bc.damage);
-
-            if(bc.slowDuration > 0.0f)
-                AddSlow(bc.slowSpeed, bc.slowDuration);
-            if(bc.burnDuration > 0.0f)
-            {
-                burnDamagePerTick = bc.burnDamagePerTick;
-                burnDurationLeft = bc.burnDuration;
-                burnTickDuration = bc.burnTickDuration;
-                burnTickDurationLeft = bc.burnTickDuration;
-            }
-
-            Destroy(coll.gameObject);
+            burnDamagePerTick = bc.burnDamagePerTick;
+            burnDurationLeft = bc.burnDuration;
+            burnTickDuration = bc.burnTickDuration;
+            burnTickDurationLeft = bc.burnTickDuration;
         }
+
+        Destroy(bc.gameObject);
     }
 }

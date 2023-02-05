@@ -7,5 +7,6 @@ namespace GGJ2023
         public static UnityEvent PlayerDeath = new UnityEvent();
         public static UnityEvent NewWave = new UnityEvent();
         public static UnityEvent ArenaChange = new UnityEvent();
+        public static UnityEvent KillAll = new UnityEvent();
     }
 }
