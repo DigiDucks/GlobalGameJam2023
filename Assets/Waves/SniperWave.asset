@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd966c1e6f824cf8848143d57bf5b402, type: 3}
-  m_Name: PistolWave
+  m_Name: SniperWave
   m_EditorClassIdentifier: 
   _name: 
   enemies:
-  - Enemy: {fileID: 4008145678738674361, guid: 4a3f777276e4f7544ae23d85021aff08, type: 3}
-    count: 15
+  - Enemy: {fileID: 4008145678738674361, guid: c8bab1fecfd2c32458f5c3aca83891f5, type: 3}
+    count: 12
   rate: 0.5
   effect: 0

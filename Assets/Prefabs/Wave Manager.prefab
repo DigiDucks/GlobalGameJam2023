@@ -44,20 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d93dd01ae684422b07bc4fe4e84649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundCounter: 0
+  waveCounter: 0
+  RoundInterval: 5
   waves:
-  - name: Pistol Test
-    enemy: {fileID: 2025983566539107494, guid: 4a3f777276e4f7544ae23d85021aff08, type: 3}
-    count: 5
-    rate: 5
-  - name: Test Wave
-    enemy: {fileID: 2025983566539107494, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
-    count: 5
-    rate: 1
-  - name: Murder Time
-    enemy: {fileID: 2025983566539107494, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
-    count: 50
-    rate: 5
+  - {fileID: 11400000, guid: 811bc25a7aa67bb49b0f6ece16eaec60, type: 2}
+  - {fileID: 11400000, guid: 459ee92771a84ee4dbfbfe9fe2f96e7c, type: 2}
+  - {fileID: 11400000, guid: af911cd702698614699f7495f7fdf4b2, type: 2}
+  - {fileID: 11400000, guid: f3880239011e7f5438950422fb5e9953, type: 2}
+  - {fileID: 11400000, guid: 4b97dcc6c9cfd13479e8502a9c4def20, type: 2}
+  - {fileID: 11400000, guid: 876b9f9087588d14ba3953bdd1f1aa43, type: 2}
+  - {fileID: 11400000, guid: 7226af0ab44abe24fb0777657fab9f8c, type: 2}
   spawnLocations:
   - {fileID: 0}
   - {fileID: 0}
@@ -80,4 +76,5 @@ MonoBehaviour:
   timeBetweenWaves: 5
   waveCountdown: 0
   waveCountdownTimer: {fileID: 0}
+  roundCounter: {fileID: 0}
   state: 2

@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 3
+  speed: 1
   damageValue: 0
   impactEffect: {fileID: 4423801109589410838, guid: 381d04336be6a4300bdc4fab66c2f070, type: 3}
   explosionRadius: 0
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  outchPitch: 0.4
   face: {fileID: 5596243127398220580}
 --- !u!54 &2104761772298050090
 Rigidbody:
@@ -226,9 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3357566480658978341, guid: cf1f17de7d4cf134ab113776b60e3aa1, type: 3}
-  shotCooldown: 3
+  shotCooldown: 6
   bulletsPerShot: 1
-  damagePerBullet: 4
+  damagePerBullet: 3
   bulletLifetime: 3
   bulletVelocity: 10
 --- !u!1 &5596243127398220580

@@ -131,10 +131,20 @@ public class WaveSpawner : Singleton<WaveSpawner>
         GameObject newEnemy = Instantiate(_enemy, RandomSpawnLocation().position, transform.rotation);
 
         Enemy neComp = newEnemy.GetComponent<Enemy>();
-        neComp.health += 2 * (waveCounter / 2);
+        neComp.health += 1 * (waveCounter / 5);
         
         ChaseTarget neChase = newEnemy.GetComponent<ChaseTarget>();
-        neChase.speed += 2 * (waveCounter / 2);
+        neChase.speed += 1 * (waveCounter / 5);
+
+        if(newEnemy.GetComponent<EnemyShoot>() != null)
+        {
+            EnemyShoot neShoot = newEnemy.GetComponent<EnemyShoot>();
+            neShoot.shotCooldown -= 0.2f * (waveCounter / 5);
+            neShoot.shotCooldown = Mathf.Clamp(neShoot.shotCooldown, 0.1f, 10f);
+            neShoot.damagePerBullet += 1 * (waveCounter / 5);
+            neShoot.bulletLifetime += 0.5f * (waveCounter / 5);
+            neShoot.bulletVelocity += 0.5f * (waveCounter / 5);
+        }
 
         EnemiesInWave.Add(newEnemy.GetComponent<Enemy>());
     }

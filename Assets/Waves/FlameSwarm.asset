@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd966c1e6f824cf8848143d57bf5b402, type: 3}
-  m_Name: PistolWave
+  m_Name: FlameSwarm
   m_EditorClassIdentifier: 
   _name: 
   enemies:
-  - Enemy: {fileID: 4008145678738674361, guid: 4a3f777276e4f7544ae23d85021aff08, type: 3}
+  - Enemy: {fileID: 4008145678738674361, guid: 29191883184177349b5c95a0bc2071c5, type: 3}
     count: 15
-  rate: 0.5
+  rate: 1
   effect: 0
