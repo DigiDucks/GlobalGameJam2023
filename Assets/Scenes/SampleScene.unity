@@ -1621,6 +1621,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundCounter: 0
   waves:
+  - name: Murder Time
+    enemy: {fileID: 2025983566539107494, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
+    count: 50
+    rate: 5
   - name: Pistol Test
     enemy: {fileID: 2025983566539107494, guid: 4a3f777276e4f7544ae23d85021aff08, type: 3}
     count: 5
@@ -1629,10 +1633,6 @@ MonoBehaviour:
     enemy: {fileID: 2025983566539107494, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
     count: 5
     rate: 1
-  - name: Murder Time
-    enemy: {fileID: 2025983566539107494, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
-    count: 50
-    rate: 5
   spawnLocations:
   - {fileID: 1802473680}
   - {fileID: 1172090085}
@@ -2386,7 +2386,7 @@ Transform:
   m_Children:
   - {fileID: 1234122969}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1420961707
 MonoBehaviour:
@@ -3699,7 +3699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2251178011596494216, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2251178011596494216, guid: 53a61e5ba443b4a3ca2559e37dde0c90, type: 3}
       propertyPath: m_AnchorMax.x
