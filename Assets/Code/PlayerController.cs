@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GGJ2023;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,7 @@ public class PlayerController : Singleton<PlayerController>
     public CameraShake camShake;
     public float duration;
     public float magnitude;
+    private Camera mainCamera;
 
 
     [Space]
@@ -80,6 +82,7 @@ public class PlayerController : Singleton<PlayerController>
         HealthStart();
         soundSource = GetComponent<AudioSource>();
         face = transform.GetChild(1).gameObject;
+        mainCamera = Camera.main;
     }
 
 
@@ -106,7 +109,9 @@ public class PlayerController : Singleton<PlayerController>
         TestValues();
 
         // For rotating the sprite to face the camera
-        face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
+
+        face.transform.LookAt(mainCamera.transform);
+        face.transform.Rotate(0, 180, 0);
     }
 
 
@@ -198,7 +203,10 @@ public class PlayerController : Singleton<PlayerController>
         {
             //this is meant to be overwritten
             Debug.Log(transform.name + " died");
-            Destroy(gameObject);
+            
+            //Trigger Death Sequence [Li]
+            EventManager.PlayerDeath.Invoke();
+           // Destroy(gameObject);
         }
     }
     #endregion
@@ -306,7 +314,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         Bullet bc = coll.gameObject.GetComponent<Bullet>();
 
-        if(bc != null && bc.tag == "Enemy")
+        if(bc != null && bc.CompareTag("Enemy"))
         {
             TakeDamage(bc.damage);
 

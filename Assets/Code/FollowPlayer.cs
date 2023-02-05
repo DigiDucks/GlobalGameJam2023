@@ -7,6 +7,13 @@ public class FollowPlayer : MonoBehaviour
     public GameObject playerRef;
     private Vector3 diff;
 
+    [SerializeField] private float BoundsZ = 6;
+    [SerializeField] private float BoundsX = 2;
+    [SerializeField] private float SmoothSpeed = 1f;
+    [SerializeField] private float OffsetX = 2f;
+    [SerializeField] private float OffsetZ = 2f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,21 +23,18 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerRef != null)
+        if (playerRef != null)
         {
-            Vector3 pt = playerRef.transform.position;
+            Vector3 pt = playerRef.transform.position + new Vector3(OffsetX,0,OffsetZ);
+            var pos = transform.position;
 
-            if(pt.x < -19)
-                pt.x = -19;
-            else if(pt.x > 19)
-                pt.x = 19;
+            pt.y = pos.y;
 
-            if(pt.z < -13)
-                pt.z = -13;
-            else if(pt.z > 13)
-                pt.z = 13;
+            var delta = Vector3.Lerp(pos, pt, SmoothSpeed);
 
-            gameObject.transform.position = pt + diff;
+            //Smoothly go towards the player while not going outside the arena [Li]
+            gameObject.transform.position = new Vector3(Mathf.Clamp(delta.x, -BoundsX, BoundsX), pos.y,
+                Mathf.Clamp(delta.z, -BoundsZ, 0));
         }
     }
 }

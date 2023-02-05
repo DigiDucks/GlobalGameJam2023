@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     private GameObject face;
+    private Camera mainCamera;
 
     // Burn Handling
     private int burnDamagePerTick;
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         face = transform.GetChild(0).gameObject; 
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -53,14 +55,16 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
 
         // Rotate sprite to face camera
-        face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
+        //face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
+        face.transform.LookAt(mainCamera.transform);
+        face.transform.Rotate(0, 180, 0);
     }
 
     void OnTriggerEnter(Collider coll)
     {
         Bullet bc = coll.gameObject.GetComponent<Bullet>();
 
-        if(bc != null && bc.tag == "Player")
+        if(bc != null && bc.CompareTag("Player"))
         {
             health -= bc.damage;
 

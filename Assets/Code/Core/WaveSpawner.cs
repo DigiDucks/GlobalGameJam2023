@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
     public int roundCounter = 0;
 
-    //wave defign
+    //wave define
     [System.Serializable]
     public class Wave
     {
@@ -53,7 +53,7 @@ public class WaveSpawner : MonoBehaviour
             //check if enemies are still alive
             if (!EnemyIsAlive())
             {
-                //begine a new round
+                //begin a new round
                 WaveCompleted();
                 return;
             }
