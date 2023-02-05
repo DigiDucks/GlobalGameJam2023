@@ -128,7 +128,15 @@ public class WaveSpawner : Singleton<WaveSpawner>
     {
         //spawn enemy
         //Debug.Log("Spawning Enemy: " + _enemy.name);
-       EnemiesInWave.Add(Instantiate(_enemy, RandomSpawnLocation().position, transform.rotation).GetComponent<Enemy>());
+        GameObject newEnemy = Instantiate(_enemy, RandomSpawnLocation().position, transform.rotation);
+
+        Enemy neComp = newEnemy.GetComponent<Enemy>();
+        neComp.health += 2 * (waveCounter / 2);
+        
+        ChaseTarget neChase = newEnemy.GetComponent<ChaseTarget>();
+        neChase.speed += 2 * (waveCounter / 2);
+
+        EnemiesInWave.Add(newEnemy.GetComponent<Enemy>());
     }
 
 

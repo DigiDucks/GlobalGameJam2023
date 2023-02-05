@@ -145,13 +145,13 @@ public class CollectibleSpawner : MonoBehaviour
                 break;
             case 12: // Num Chains
                 if(rarity <= 33.0f)
-                    npc.NumChains = 1;
-                else if(rarity <= 6.0f)
                     npc.NumChains = 2;
-                else if(rarity <= 8.5f)
+                else if(rarity <= 6.0f)
                     npc.NumChains = 3;
+                else if(rarity <= 8.5f)
+                    npc.NumChains = 4;
                 else
-                    npc.NumChains = 5;
+                    npc.NumChains = 6;
                 break;
             case 13: // Damage Per Chain
                 if(rarity <= 33.0f)
