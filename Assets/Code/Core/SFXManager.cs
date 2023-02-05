@@ -43,8 +43,10 @@ public class SFXManager : Singleton<SFXManager>
         pickup.RandomSoundVariantPlay();
     }
 
-    public void PlayOuch()
+    public void PlayOuch(float pitch = 1)
     {
+        
         hurt.RandomSoundVariantPlay();
+        Source.pitch *= pitch;
     }
 }

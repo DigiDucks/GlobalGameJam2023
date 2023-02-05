@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  outchPitch: 3
   face: {fileID: 5596243127398220580}
 --- !u!54 &2104761772298050090
 Rigidbody:

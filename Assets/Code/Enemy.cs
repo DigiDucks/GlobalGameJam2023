@@ -7,6 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health;
+    public float outchPitch = 0.4f;
    [SerializeField] private GameObject face;
     private Camera mainCamera;
 
@@ -62,8 +63,11 @@ public class Enemy : MonoBehaviour
         }
         chainedThisHit = false;
 
-        if(health <= 0)
+        if (health <= 0)
+        {
+            SFXManager.Instance.PlayOuch(outchPitch);
             Destroy(gameObject);
+        }
 
         // Rotate sprite to face camera
         face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
