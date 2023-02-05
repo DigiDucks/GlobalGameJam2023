@@ -868,6 +868,16 @@ MonoBehaviour:
   damagePerBullet: 1
   bulletLifetime: 3
   bulletVelocity: 10
+  burnDamagePerTick: 0
+  burnDuration: 0
+  burnTickDuration: 0
+  slowSpeed: 0
+  slowDuration: 0
+  numChains: 0
+  damagePerChain: 0
+  chainRange: 0
+  bombRange: 0
+  bombDamage: 0
   cubePrefab: {fileID: 0}
   playerTargetingScript: {fileID: 384465335}
 --- !u!82 &384465340

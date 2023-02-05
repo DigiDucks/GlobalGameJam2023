@@ -13,6 +13,26 @@ public class PlayerAbility : MonoBehaviour
     public float bulletLifetime;
     public float bulletVelocity;
 
+    // Special Effects
+    // ----Burn Effect
+    [Header("Burn Effect")]
+    public int burnDamagePerTick;
+    public float burnDuration;
+    public float burnTickDuration;
+    // ----Slow Effect
+    [Header("Slow Effect")]
+    public float slowSpeed;
+    public float slowDuration;
+    // ----Chain Effect
+    [Header("Chain Effect")]
+    public int numChains;
+    public int damagePerChain;
+    public float chainRange;
+    // ----Bomb Effect
+    [Header("Bomb Effect")]
+    public float bombRange;
+    public int bombDamage;
+
     [Header("Debug Enemy Spawning")]
     public GameObject cubePrefab;
     public PlayerTargeting playerTargetingScript;
@@ -41,6 +61,24 @@ public class PlayerAbility : MonoBehaviour
             bulletInstComp.timeUntilDestroy = bulletLifetime;
             bulletInstComp.damage = damagePerBullet;
             bulletInstance.tag = "Player";
+
+            // Burn
+            bulletInstComp.burnDamagePerTick = burnDamagePerTick;
+            bulletInstComp.burnDuration = burnDuration;
+            bulletInstComp.burnTickDuration = burnTickDuration;
+
+            // Slow
+            bulletInstComp.slowSpeed = slowSpeed;
+            bulletInstComp.slowDuration = slowDuration;
+
+            // Chain
+            bulletInstComp.numChains = numChains;
+            bulletInstComp.damagePerChain = damagePerChain;
+            bulletInstComp.chainRange = chainRange;
+
+            // Bomb
+            bulletInstComp.bombRange = bombRange;
+            bulletInstComp.bombDamage = bombDamage;
 
             shotCooldownLeft = shotCooldown;
         }
