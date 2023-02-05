@@ -21,6 +21,8 @@ public class CollectibleSpawner : MonoBehaviour
         int effect = Random.Range(0, 17);
         float rarity = Random.Range(0.0f, 100.0f);
 
+        MeshRenderer npmr = newPowerup.GetComponent<MeshRenderer>();
+
         switch(effect)
         {
             case 0: // Max Health
@@ -32,6 +34,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.MaxHealthAdded = 7;
                 else
                     npc.MaxHealthAdded = 10;
+                npmr.material = npc.green;
                 break;
             case 1: // Armor
                 if(rarity <= 33.0f)
@@ -42,6 +45,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.ArmorAdded = 3;
                 else
                     npc.ArmorAdded = 4;
+                npmr.material = npc.green;
                 break;
             case 2: // Speed
                 if(rarity <= 33.0f)
@@ -52,6 +56,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.SpeedAdded = 4.0f;
                 else
                     npc.SpeedAdded = 8.0f;
+                npmr.material = npc.green;
                 break;
             case 3: // Shot Cooldown
                 if(rarity <= 33.0f)
@@ -62,6 +67,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.ShotCooldownAdded = -0.4f;
                 else
                     npc.ShotCooldownAdded = -0.6f;
+                npmr.material = npc.orange;
                 break;
             case 4: // Bullet Damage
                 if(rarity <= 33.0f)
@@ -72,6 +78,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BulletDamageAdded = 3;
                 else
                     npc.BulletDamageAdded = 5;
+                npmr.material = npc.orange;
                 break;
             case 5: // Bullet Lifetime
                 if(rarity <= 33.0f)
@@ -82,6 +89,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BulletLifetimeAdded = 1.0f;
                 else
                     npc.BulletLifetimeAdded = 2.0f;
+                npmr.material = npc.orange;
                 break;
             case 6: // Bullet Velocity
                 if(rarity <= 33.0f)
@@ -92,6 +100,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BulletVelocityAdded = 4.0f;
                 else
                     npc.BulletVelocityAdded = 8.0f;
+                npmr.material = npc.orange;
                 break;
             case 7: // Burn Damage Per Tick
                 if(rarity <= 33.0f)
@@ -102,6 +111,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BurnDamagePerTick = 3;
                 else
                     npc.BurnDamagePerTick = 5;
+                npmr.material = npc.red;
                 break;
             case 8: // Burn Duration
                 if(rarity <= 33.0f)
@@ -112,6 +122,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BurnDuration = 5.0f;
                 else
                     npc.BurnDuration = 10.0f;
+                npmr.material = npc.red;
                 break;
             case 9: // Burn Tick Duration
                 if(rarity <= 33.0f)
@@ -122,6 +133,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BurnTickDuration = -0.75f;
                 else
                     npc.BurnTickDuration = -1.0f;
+                npmr.material = npc.red;
                 break;
             case 10: // Slow Speed
                 if(rarity <= 33.0f)
@@ -132,6 +144,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.SlowSpeed = 4.0f;
                 else
                     npc.SlowSpeed = 8.0f;
+                npmr.material = npc.blue;
                 break;
             case 11: // Slow Duration
                 if(rarity <= 33.0f)
@@ -142,6 +155,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.SlowDuration = 5.0f;
                 else
                     npc.SlowDuration = 8.0f;
+                npmr.material = npc.blue;
                 break;
             case 12: // Num Chains
                 if(rarity <= 33.0f)
@@ -152,6 +166,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.NumChains = 4;
                 else
                     npc.NumChains = 6;
+                npmr.material = npc.yellow;
                 break;
             case 13: // Damage Per Chain
                 if(rarity <= 33.0f)
@@ -162,6 +177,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.DamagePerChain = 3;
                 else
                     npc.DamagePerChain = 5;
+                npmr.material = npc.yellow;
                 break;
             case 14: // ChainRange
                 if(rarity <= 33.0f)
@@ -172,6 +188,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.ChainRange = 5.0f;
                 else
                     npc.ChainRange = 8.0f;
+                npmr.material = npc.yellow;
                 break;
             case 15: // Bomb Range
                 if(rarity <= 33.0f)
@@ -182,6 +199,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BombRange = 3.0f;
                 else
                     npc.BombRange = 5.0f;
+                npmr.material = npc.purple;
                 break;
             case 16: // Bomb Damage
                 if(rarity <= 33.0f)
@@ -192,6 +210,7 @@ public class CollectibleSpawner : MonoBehaviour
                     npc.BombDamage = 3;
                 else
                     npc.BombDamage = 5;
+                npmr.material = npc.purple;
                 break;
         }
 

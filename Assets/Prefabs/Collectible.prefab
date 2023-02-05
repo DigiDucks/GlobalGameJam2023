@@ -99,6 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6643bee3027f31449136b59201cb640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  green: {fileID: 2100000, guid: dfdf61e76d517204380b14a086c04e5d, type: 2}
+  orange: {fileID: 2100000, guid: 91e35f3a7f974409e9e2b4c08a4459e5, type: 2}
+  red: {fileID: 2100000, guid: 91a0d5ebc5137604b90a338ccc71dddd, type: 2}
+  blue: {fileID: 2100000, guid: e5dcf8b4af9da7c47a0bad52de54c2cf, type: 2}
+  yellow: {fileID: 2100000, guid: acd133cba434025418138f42fdab96b6, type: 2}
+  purple: {fileID: 2100000, guid: 260936e25cc26ee4cb9d73ad4a50ec3d, type: 2}
   MaxHealthAdded: 0
   ArmorAdded: 0
   SpeedAdded: 0

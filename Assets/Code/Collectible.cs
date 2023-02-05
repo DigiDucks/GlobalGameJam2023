@@ -12,6 +12,14 @@ public class Collectible : MonoBehaviour
         Bomb,
     }
     
+    [Header("Material Prefabs")]
+    public Material green; // Health, Armor, Speed
+    public Material orange; // Weapon stat mods
+    public Material red; // Burn
+    public Material blue; // Slow
+    public Material yellow; // Chain
+    public Material purple; // Bomb
+
     [Header("Basic Stats")]
     public int MaxHealthAdded;
     public int ArmorAdded;
