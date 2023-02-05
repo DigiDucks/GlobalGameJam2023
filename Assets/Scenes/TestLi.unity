@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44961774, g: 0.49969178, b: 0.575657, a: 1}
+  m_IndirectSpecularColor: {r: 0.44961822, g: 0.4996925, b: 0.5756582, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -574,6 +574,52 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1407283278082268272, guid: 37a0e314855dd1546952748682bd4e2c, type: 3}
   m_PrefabInstance: {fileID: 1407283277356458909}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &941087999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 941088001}
+  - component: {fileID: 941088000}
+  m_Layer: 0
+  m_Name: CollectibleHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &941088000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941087999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d871c2979a58143bca7ad7bf1bebbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectiblePrefab: {fileID: 3533219409914159787, guid: 46914f11d333cd04a90cfde5a4158f2e, type: 3}
+  spawnPoint: {x: -10, y: 1, z: 0}
+--- !u!4 &941088001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941087999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.648581, y: 19.590927, z: -29.803694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172090085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1407283276211638136, guid: 37a0e314855dd1546952748682bd4e2c, type: 3}

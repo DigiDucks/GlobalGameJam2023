@@ -13,14 +13,6 @@ public class CollectibleSpawner : MonoBehaviour
         GGJ2023.EventManager.NewWave.AddListener(SpawnPowerup);
     }
 
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    */
-
     void SpawnPowerup()
     {
         GameObject newPowerup = Instantiate(collectiblePrefab, spawnPoint, Quaternion.identity);
@@ -204,5 +196,13 @@ public class CollectibleSpawner : MonoBehaviour
         }
 
         Animator npa = newPowerup.GetComponent<Animator>();
+        if(rarity <= 33.0f)
+            npa.speed = 1.0f;
+        else if(rarity <= 6.0f)
+            npa.speed = 1.5f;
+        else if(rarity <= 8.5f)
+            npa.speed = 2.0f;
+        else
+            npa.speed = 4.0f;
     }
 }
