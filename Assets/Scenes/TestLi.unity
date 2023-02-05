@@ -849,7 +849,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e42c47ded3ce45e41a391d27bb462335, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.31
+  m_Volume: 0.184
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1175,6 +1175,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1958663943317860578, guid: aaf4300e9954f174995ef476c4276832, type: 3}
+      propertyPath: volumeMax
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958663943317860578, guid: aaf4300e9954f174995ef476c4276832, type: 3}
+      propertyPath: volumeMin
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1958663943317860580, guid: aaf4300e9954f174995ef476c4276832, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1219,6 +1227,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1958663943317860581, guid: aaf4300e9954f174995ef476c4276832, type: 3}
+      propertyPath: volumeMax
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958663943317860581, guid: aaf4300e9954f174995ef476c4276832, type: 3}
+      propertyPath: volumeMin
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958663943317860583, guid: aaf4300e9954f174995ef476c4276832, type: 3}
+      propertyPath: m_Volume
+      value: 0.201
+      objectReference: {fileID: 0}
     - target: {fileID: 1958663943317860585, guid: aaf4300e9954f174995ef476c4276832, type: 3}
       propertyPath: m_Name
       value: SFXManager
@@ -1243,6 +1263,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8658551284035886881, guid: 8c4dbfec80632dd4bb0ac7659020a818, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8658551284035886884, guid: 8c4dbfec80632dd4bb0ac7659020a818, type: 3}
       propertyPath: camShake
       value: 
