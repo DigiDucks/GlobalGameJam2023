@@ -27,7 +27,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
     //timers
     public float timeBetweenWaves = 5f;
     public float waveCountdown;
-    public TextMeshProUGUI waveCountdownTimer;
+    public TextMeshProUGUI waveCountdownTimer, roundCounter;
 
     //state machine
     public SpawnState state = SpawnState.COUNTING;
@@ -84,6 +84,8 @@ public class WaveSpawner : Singleton<WaveSpawner>
         waveCountdown = timeBetweenWaves;
 
         nextWave++;
+
+        roundCounter.text = nextWave.ToString();
 
         EventManager.NewWave.Invoke();
         
