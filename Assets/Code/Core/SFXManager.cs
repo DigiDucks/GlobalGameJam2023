@@ -25,7 +25,7 @@ public class SFXManager : Singleton<SFXManager>
 
     private void Start()
     {
-        _source.loop = false;
+        Source.loop = false;
     }
 
     private void OnEnable()

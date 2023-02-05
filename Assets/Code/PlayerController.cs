@@ -70,6 +70,7 @@ public class PlayerController : Singleton<PlayerController>
         soundSource = GetComponent<AudioSource>();
         face = transform.GetChild(1).gameObject;
         mainCamera = Camera.main;
+        GGJ2023.EventManager.ArenaChange.AddListener(ResetHealth);
     }
 
 
@@ -322,5 +323,10 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         Destroy(bc.gameObject);
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
     }
 }

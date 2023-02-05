@@ -84,6 +84,8 @@ public class WaveSpawner : Singleton<WaveSpawner>
         waveCountdown = timeBetweenWaves;
 
         nextWave++;
+
+        EventManager.NewWave.Invoke();
         
         if (nextWave % RoundInterval == 0)
         {
