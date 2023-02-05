@@ -181,6 +181,8 @@ public class PlayerController : Singleton<PlayerController>
             soundSource.pitch = damagePitch;
             soundSource.PlayOneShot(damageSound);
         }
+        
+        SFXManager.Instance.PlayOuch();
 
         DeathCheck();
     }

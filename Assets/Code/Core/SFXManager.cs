@@ -10,7 +10,7 @@ public class SFXManager : Singleton<SFXManager>
     [SerializeField] private AudioClip countDown;
 
     private AudioSource _source;
-    private RandomSoundVariant rsv;
+  [SerializeField] private RandomSoundVariant pickup, hurt ;
 
     private AudioSource Source
     {
@@ -25,7 +25,6 @@ public class SFXManager : Singleton<SFXManager>
 
     private void Start()
     {
-        rsv = GetComponent<RandomSoundVariant>();
         _source.loop = false;
     }
 
@@ -41,6 +40,11 @@ public class SFXManager : Singleton<SFXManager>
 
     public void PlayPickup()
     {
-        rsv.RandomSoundVariantPlay();
+        pickup.RandomSoundVariantPlay();
+    }
+
+    public void PlayOuch()
+    {
+        hurt.RandomSoundVariantPlay();
     }
 }
