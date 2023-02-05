@@ -70,6 +70,8 @@ public class Collectible : MonoBehaviour
             pa.bombRange += BombRange;
             pa.bombDamage += BombDamage;
 
+            SFXManager.Instance.PlayPickup();
+            
             Destroy(gameObject);
         }
     }

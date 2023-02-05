@@ -108,7 +108,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
             for (int i = 0; i < element.count; i++)
             {
                 SpawnEnemy(element.Enemy);
-                yield return new WaitForSeconds(1f / _wave.rate);
+                yield return new WaitForSeconds( _wave.rate);
             }
         }
         
