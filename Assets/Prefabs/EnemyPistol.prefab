@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6797238070548096445}
   - component: {fileID: 7329236969239736229}
-  m_Layer: 0
+  - component: {fileID: 6396387207898248100}
+  m_Layer: 9
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,6 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &6396387207898248100
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195121417550440702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.19
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4008145678738674361
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +113,7 @@ GameObject:
   - component: {fileID: 2104761772298050090}
   - component: {fileID: 5070291311016989627}
   - component: {fileID: 5773800916700928340}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyPistol
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -166,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  face: {fileID: 3195121417550440702}
 --- !u!54 &2104761772298050090
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -211,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8f20a4ac30b7643a5303491e9d0bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3357566480658978341, guid: abb92c0fd54c00b4e99c942c00725d12, type: 3}
+  bulletPrefab: {fileID: 3357566480658978341, guid: cf1f17de7d4cf134ab113776b60e3aa1, type: 3}
   shotCooldown: 3
   bulletsPerShot: 1
   damagePerBullet: 1

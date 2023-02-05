@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8658551284035886890}
   - component: {fileID: 8658551284035886886}
   - component: {fileID: 8658551284035886881}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -155,6 +155,16 @@ MonoBehaviour:
   damagePerBullet: 1
   bulletLifetime: 3
   bulletVelocity: 10
+  burnDamagePerTick: 0
+  burnDuration: 0
+  burnTickDuration: 0
+  slowSpeed: 0
+  slowDuration: 0
+  numChains: 0
+  damagePerChain: 0
+  chainRange: 0
+  bombRange: 0
+  bombDamage: 0
   cubePrefab: {fileID: 0}
   playerTargetingScript: {fileID: 8658551284035886890}
 --- !u!82 &8658551284035886881
@@ -262,7 +272,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8658551285203430867}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletSpawnLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +305,7 @@ GameObject:
   - component: {fileID: 8658551285300915413}
   - component: {fileID: 8658551285300915412}
   - component: {fileID: 8658551285300915415}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +404,7 @@ GameObject:
   - component: {fileID: 8658551285600906705}
   - component: {fileID: 8658551285600906710}
   - component: {fileID: 8658551285600906704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

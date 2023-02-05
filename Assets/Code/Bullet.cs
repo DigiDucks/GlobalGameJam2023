@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,12 @@ public class Bullet : MonoBehaviour
         // Life cycle update
         timeUntilDestroy -= Time.deltaTime;
         if(timeUntilDestroy <= 0.0f)
+            Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Obstacle"))
             Destroy(gameObject);
     }
 }

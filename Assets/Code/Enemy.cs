@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int health;
-    private GameObject face;
+   [SerializeField] private GameObject face;
     private Camera mainCamera;
 
     // Burn Handling
@@ -22,7 +23,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        face = transform.GetChild(0).gameObject; 
         mainCamera = Camera.main;
     }
 
@@ -55,9 +55,14 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
 
         // Rotate sprite to face camera
-        //face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
-        face.transform.LookAt(mainCamera.transform);
-        face.transform.Rotate(0, 180, 0);
+        face.transform.LookAt(new Vector3(transform.position.x, transform.position.y + 30.0f, -25.5f));
+        //face.transform.forward = mainCamera.transform.forward;
+       // face.transform.Rotate(0, 180, 0);
+    }
+
+    private void OnDisable()
+    {
+        WaveSpawner.EnemiesInWave.Remove(this);
     }
 
     void OnTriggerEnter(Collider coll)

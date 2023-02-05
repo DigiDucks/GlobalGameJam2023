@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 
-public class WaveSpawner : MonoBehaviour
+public class WaveSpawner : Singleton<WaveSpawner>
 {
     //spawner state locks
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
@@ -38,6 +38,8 @@ public class WaveSpawner : MonoBehaviour
 
     //state machine
     public SpawnState state = SpawnState.COUNTING;
+
+    public static List<Enemy> EnemiesInWave = new List<Enemy>();
 
     //start 
     private void Start()
@@ -75,7 +77,7 @@ public class WaveSpawner : MonoBehaviour
         {
             waveCountdown -= Time.deltaTime;
             waveCountdown = Mathf.Clamp(waveCountdown, 0f, Mathf.Infinity);
-            waveCountdownTimer.text = string.Format("{0:00.00}", waveCountdown);
+            waveCountdownTimer.text = $"{waveCountdown:00.00}";
         }
     }
 
@@ -97,25 +99,12 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    bool EnemyIsAlive()
-    {
-        //search countdown timer
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown <= 0f)
-        {
-            //Debug.Log("search counting");
-            searchCountdown = 1f;
-            //check every gameobject for tag enemy HEAVY LAG, so increase countdown to delay time between searches
-            if (GameObject.FindGameObjectWithTag("Enemy") == null)
-            {
-                //Debug.Log("search trigger");
-                return false;
-            }
-        }
-
-        //else true
-        return true;
-    }
+    /// <summary>
+    /// Query the status of aliveness [Li]
+    /// </summary>
+    /// <returns> non zeroness of the enemy count</returns>
+    bool EnemyIsAlive() => EnemiesInWave.Count > 0;
+    
 
     IEnumerator SpawnWave(Wave _wave)
     {
@@ -142,7 +131,12 @@ public class WaveSpawner : MonoBehaviour
     {
         //spawn enemy
         //Debug.Log("Spawning Enemy: " + _enemy.name);
-        Instantiate(_enemy, RandomSpawnLocation().position, transform.rotation);
+       EnemiesInWave.Add(Instantiate(_enemy, RandomSpawnLocation().position, transform.rotation).GetComponent<Enemy>());
+    }
+
+    public void EnemyKilled(Enemy enemy)
+    {
+        EnemiesInWave.Remove(enemy);
     }
 
 
