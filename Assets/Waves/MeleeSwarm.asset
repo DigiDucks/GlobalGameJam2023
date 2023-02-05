@@ -16,5 +16,5 @@ MonoBehaviour:
   enemies:
   - Enemy: {fileID: 4008145678738674361, guid: c2b95bbde49544f95a424be1be917e55, type: 3}
     count: 20
-  rate: 0
+  rate: 0.1
   effect: 0

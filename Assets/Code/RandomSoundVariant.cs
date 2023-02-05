@@ -3,31 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent( typeof(AudioSource))]
 public class RandomSoundVariant : MonoBehaviour
 {
     //damage sound
     [Space]
     [Header("Random Sound")]
     private AudioSource soundSource;
-    public AudioClip[] soundClip;
+    public AudioClip[] soundClips;
     private AudioClip currentClip;
     private float volume;
     private float pitch;
-    public float volumeMin;
-    public float volumeMax;
-    public float pitchMin;
-    public float pitchMax;
+    public float volumeMin =1;
+    public float volumeMax =1;
+    public float pitchMin=1;
+    public float pitchMax=1;
 
     private int index;
-
-
+    
     public void RandomSoundVariantPlay()
     {
-        if(soundClip.Length > 0)
+        soundSource = GetComponent<AudioSource>();
+        
+        if(soundClips.Length > 0)
         {
             //get random clip
-            index = UnityEngine.Random.Range(0, soundClip.Length);
-            currentClip = soundClip[index];
+            index = UnityEngine.Random.Range(0, soundClips.Length);
+            currentClip = soundClips[index];
 
             //make random volume and pitch
             volume = UnityEngine.Random.Range(volumeMin, volumeMax);

@@ -63,6 +63,7 @@ public class WaveSpawner : Singleton<WaveSpawner>
                 waveCountdown -= Time.deltaTime;
                 waveCountdown = Mathf.Clamp(waveCountdown, 0f, Mathf.Infinity);
                 waveCountdownTimer.text = $"{waveCountdown:00.00}";
+                
 
                 if (waveCountdown <= 0)
                 {

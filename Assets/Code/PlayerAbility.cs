@@ -54,6 +54,8 @@ public class PlayerAbility : MonoBehaviour
         //Cheat Code
         if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.K))
             EventManager.KillAll.Invoke();
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.M))
+            EventManager.ArenaChange.Invoke();
 
         if(shotCooldownLeft > 0.0f)
             shotCooldownLeft -= Time.deltaTime;
