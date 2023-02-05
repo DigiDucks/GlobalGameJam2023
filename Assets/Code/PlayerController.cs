@@ -68,6 +68,12 @@ public class PlayerController : Singleton<PlayerController>
 
     private GameObject face;
 
+    // Burn Handling
+    private int burnDamagePerTick;
+    private float burnDurationLeft;
+    private float burnTickDuration;
+    private float burnTickDurationLeft; 
+
     //set health vals
     private void Start()
     {
@@ -83,6 +89,18 @@ public class PlayerController : Singleton<PlayerController>
         HealthUpdate();
         UpdateSlow();
         UpdateSpeed();
+
+        if(burnDurationLeft > 0.0f)
+        {
+            burnTickDurationLeft -= Time.deltaTime;
+            if(burnTickDurationLeft <= 0.0f)
+            {
+                currentHealth -= burnDamagePerTick;
+                burnTickDurationLeft = burnTickDuration;
+            }
+
+            burnDurationLeft -= Time.deltaTime;
+        }
 
         //temp debugging
         TestValues();
@@ -291,6 +309,17 @@ public class PlayerController : Singleton<PlayerController>
         if(bc != null && bc.tag == "Enemy")
         {
             TakeDamage(bc.damage);
+
+            if(bc.slowDuration > 0.0f)
+                AddSlow(bc.slowSpeed, bc.slowDuration);
+            if(bc.burnDuration > 0.0f)
+            {
+                burnDamagePerTick = bc.burnDamagePerTick;
+                burnDurationLeft = bc.burnDuration;
+                burnTickDuration = bc.burnTickDuration;
+                burnTickDurationLeft = bc.burnTickDuration;
+            }
+
             Destroy(coll.gameObject);
         }
     }
